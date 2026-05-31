@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Nous utilisons SQLite pour que la prévisualisation fonctionne immédiatement dans cet environnement Sandbox sans configuration externe supplémentaire.
+// Pour la production (PostgreSQL), il suffira de remplacer "sqlite" par "postgresql"
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id          String   @id @default(uuid())
+  email       String   @unique
+  phone       String?  @unique
+  password    String
+  name        String?
+  role        String   @default("BUYER") // BUYER, VENDOR, ADMIN
+  kycStatus   String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  vendor      Vendor?
+  orders      Order[]
+  partRequests PartRequest[]
+}
+
+model Vendor {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id])
+  shopName       String
+  plan           String   @default("STANDARD") // STANDARD, PREMIUM
+  commissionRate Float    @default(0.10)
+  kycDocuments   String?  // JSON
+  
+  products       Product[]
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  vendorId    String
+  vendor      Vendor   @relation(fields: [vendorId], references: [id])
+  title       String
+  oemRef      String?
+  category    String
+  brand       String
+  model       String?
+  year        Int?
+  price       Float
+  stock       Int      @default(0)
+  state       String   @default("NEW") // NEW, USED, REFURBISHED
+  images      String   @default("[]") // JSON array of urls
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id             String   @id @default(uuid())
+  buyerId        String
+  buyer          User     @relation(fields: [buyerId], references: [id])
+  status         String   @default("CONFIRMED")
+  total          Float
+  escrowReleased Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  
+  items          OrderItem[]
+  dispute        Dispute?
+}
+
+model PartRequest {
+  id          String   @id @default(uuid())
+  buyerId     String
+  buyer       User     @relation(fields: [buyerId], references: [id])
+  fullName    String
+  phone       String
+  vehicle     String
+  partName    String
+  chassis     String?
+  description String?
+  imageUrl    String?
+  status      String   @default("En attente") // "En attente", "En recherche", "Trouvé"
+  createdAt   DateTime @default(now())
+}
+
+model Dispute {
+  id          String   @id @default(uuid())
+  orderId     String   @unique
+  order       Order    @relation(fields: [orderId], references: [id])
+  reason      String
+  description String?
+  status      String   @default("OPEN") // "OPEN", "RESOLVED"
+  createdAt   DateTime @default(now())
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Float
+}

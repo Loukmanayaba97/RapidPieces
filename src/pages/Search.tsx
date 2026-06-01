@@ -128,7 +128,7 @@ export default function Search() {
         )}
 
         <div className="mt-8 rounded-2xl text-white text-center relative overflow-hidden shadow-lg border border-gray-100">
-          <img src="/src/assets/images/car_parts_composition_1780234792189.png" alt="Parts" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+          <img src="/images/car_parts_composition_1780234792189.png" alt="Parts" className="absolute inset-0 w-full h-full object-cover opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B1C2E] via-[#0B1C2E]/90 to-[#0B1C2E]/70" />
           <div className="absolute -right-4 -top-4 w-24 h-24 bg-[#B91C1C] rounded-full opacity-50 blur-2xl"></div>
           <div className="relative z-10 p-6 pt-12">

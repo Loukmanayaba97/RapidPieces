@@ -82,7 +82,7 @@ export default function RequestPart() {
     <div className="min-h-screen bg-gray-50 pb-24">
       <div className="bg-white rounded-b-2xl shadow-sm sticky top-0 z-20 overflow-hidden">
         <div className="relative h-32 w-full">
-          <img src="/src/assets/images/car_engine_bay_1780234773130.png" alt="Engine" className="w-full h-full object-cover" />
+          <img src="/images/car_engine_bay_1780234773130.png" alt="Engine" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B1C2E] to-[#0B1C2E]/40" />
           <button onClick={() => navigate(-1)} className="absolute top-6 left-6 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
             <ArrowLeft className="w-6 h-6 text-white" />

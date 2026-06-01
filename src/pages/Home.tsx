@@ -23,7 +23,7 @@ export default function Home() {
       id: 'demo-1',
       title: 'Plaquettes de frein Bosch avant',
       price: 45000,
-      images: JSON.stringify(['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400']),
+      images: JSON.stringify(['/images/brake_pads_1780235558702.png']),
       state: 'NEW',
       brand: 'BOSCH',
       stock: 15,
@@ -34,7 +34,7 @@ export default function Home() {
       id: 'demo-2',
       title: 'Filtre à Huile Purflux',
       price: 12000,
-      images: JSON.stringify(['https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&q=80&w=400']),
+      images: JSON.stringify(['/images/oil_filter_1780235628194.png']),
       state: 'NEW',
       brand: 'PURFLUX',
       stock: 30,
@@ -45,7 +45,7 @@ export default function Home() {
       id: 'demo-3',
       title: 'Amortisseur Avant Toyota',
       price: 85000,
-      images: JSON.stringify(['https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=400']),
+      images: JSON.stringify(['/images/shock_absorber_1780235541576.png']),
       state: 'USED',
       brand: 'TOYOTA',
       stock: 5,
@@ -56,7 +56,7 @@ export default function Home() {
       id: 'demo-4',
       title: 'Bougie NGK BKR6E',
       price: 3500,
-      images: JSON.stringify(['https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&q=80&w=400']),
+      images: JSON.stringify(['/images/led_headlight_1780235575069.png']),
       state: 'NEW',
       brand: 'NGK',
       stock: 50,
@@ -95,14 +95,14 @@ export default function Home() {
       id: 1,
       title: "Nouvelle Collection",
       subtitle: "Jusqu'à -50% sur votre première commande",
-      image: "/src/assets/images/car_engine_bay_1780234773130.png",
+      image: "/images/car_engine_bay_1780234773130.png",
       btnLabel: "Acheter"
     },
     {
       id: 2,
       title: "Kit Entretien",
       subtitle: "Pièces garanties pour tous modèles",
-      image: "/src/assets/images/car_parts_composition_1780234792189.png",
+      image: "/images/car_parts_composition_1780234792189.png",
       btnLabel: "Découvrir"
     }
   ];
